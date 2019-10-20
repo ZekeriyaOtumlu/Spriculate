@@ -18,7 +18,7 @@ $(document).ready(function () {
   });
 
   // Global Variables:
-  var setTime = 10;
+  var setTime = 45;
   var intervalId;
   var correctAnswers = 0;
   var incorrectAnswers = 0;
