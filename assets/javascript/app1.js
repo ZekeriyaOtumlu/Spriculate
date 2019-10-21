@@ -65,6 +65,7 @@ $(document).ready(function () {
       $(".afterSubmit").show();
       $("form").hide();
       $("#submit").hide();
+      $(".time-remain").hide();
       $(".correct").html("Correct Answers: " + correctAnswers);
       $(".incorrect").html("Incorrect Answers: " + incorrectAnswers);
       $(".unaswered").html("Unanswered: " + unAnswered);
