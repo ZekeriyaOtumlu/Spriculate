@@ -18,7 +18,7 @@ $(document).ready(function () {
   });
 
   // Global Variables:
-  var setTime = 45;
+  var setTime = 10;
   var intervalId;
   var correctAnswers = 0;
   var incorrectAnswers = 0;
@@ -37,29 +37,30 @@ $(document).ready(function () {
 
     $("#submit").on("click", function () {
 
-      var q1 = document.forms["questions"]["q1"].value;
-      var q2 = document.forms["questions"]["q2"].value;
-      var q3 = document.forms["questions"]["q3"].value;
-      var q4 = document.forms["questions"]["q4"].value;
-      var answers = ["a", "d", "b", "c", " "];
-      var questions = [q1, q2, q3, q4];
-      // var user_input = $(this).attr("value");
+      checkAnswers()
 
-      for (var i = 0; i < totalQuestions; i++) {
-
-        if (questions[i] == answers[i]) {
-          correctAnswers++;
-        } else if (questions[i] != answers[i]) {
-          incorrectAnswers++;
-        } else {
-          unAnswered++;
-
-        }
-
-      };
-      resultForYou();
+      // resultForYou();
 
     });
+
+    function checkAnswers(){
+      var answers;
+
+      for(var i =0; i<5; i++){
+        var answers = ("#right0" + [i]);
+        if ($(answers).prop("checked")){
+          correctAnswers++;
+        }
+        //  else if($(answers).prop("unchecked")){
+        //   unAnswered++;
+        // } 
+        else{
+          incorrectAnswers++;
+        }
+        resultForYou();
+      }
+    
+    }
 
     function resultForYou() {
       $(".afterSubmit").show();
@@ -69,7 +70,7 @@ $(document).ready(function () {
       $(".correct").html("Correct Answers: " + correctAnswers);
       $(".incorrect").html("Incorrect Answers: " + incorrectAnswers);
       $(".unaswered").html("Unanswered: " + unAnswered);
-
+       
     }
   }
 
