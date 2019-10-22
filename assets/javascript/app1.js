@@ -18,7 +18,7 @@ $(document).ready(function () {
   });
 
   // Global Variables:
-  var setTime = 10;
+  var setTime = 60;
   var intervalId;
   var correctAnswers = 0;
   var incorrectAnswers = 0;
@@ -37,29 +37,30 @@ $(document).ready(function () {
 
     $("#submit").on("click", function () {
 
-      checkAnswers()
+      checkAnswers();
 
-      // resultForYou();
+      resultForYou();
 
     });
 
-    function checkAnswers(){
+    function checkAnswers() {
       var answers;
 
-      for(var i =0; i<5; i++){
+      for (var i = 1; i < 5; i++) {
         var answers = ("#right0" + [i]);
-        if ($(answers).prop("checked")){
+        console.log(answers)
+        if ($(answers).prop("checked")) {
           correctAnswers++;
         }
-        //  else if($(answers).prop("unchecked")){
-        //   unAnswered++;
-        // } 
-        else{
+         else if($(answers).prop("unchecked")){
+          unAnswered++;
+        } 
+        else {
           incorrectAnswers++;
         }
         resultForYou();
       }
-    
+
     }
 
     function resultForYou() {
@@ -70,10 +71,8 @@ $(document).ready(function () {
       $(".correct").html("Correct Answers: " + correctAnswers);
       $(".incorrect").html("Incorrect Answers: " + incorrectAnswers);
       $(".unaswered").html("Unanswered: " + unAnswered);
-       
+
     }
   }
-
-
 });
 
