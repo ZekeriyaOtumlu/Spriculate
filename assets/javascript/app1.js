@@ -2,77 +2,75 @@ $(document).ready(function () {
 
   $(".time-remain").hide();
   $("form").hide();
-  $(".afterSubmit").hide();
+  $(".results").hide();
   $("#submit").hide();
 
-  $("#btn-start").on("click", function () {
-    $(".time-remain").show();
-    $("form").show();
-    $("#btn-start").hide();
-    $(".afterSubmit").hide();
-    $("#submit").show();
-    timeCounter();
-
-
-
-  });
-
   // Global Variables:
-  var setTime = 60;
+  var setTime = 3;
   var intervalId;
   var correctAnswers = 0;
   var incorrectAnswers = 0;
   var unAnswered = 0;
   var totalQuestions = 4;
+  var fromSubmit = false;
 
-  intervalId = setInterval(timeCounter, 1000);
+  function resultsForYou() {
+    var answers = ["a", "d", "b", "c"];
+    fromSubmit = true;
 
-  function timeCounter() {
-    $("#time-down").html("Time Remaining: " + " " + setTime);
-    setTime--;
-    if (setTime === -1) {
-      var stopTimer = clearInterval(intervalId);
-      resultForYou();
-    }
-
-    $("#submit").on("click", function () {
-
-      checkAnswers();
-
-      resultForYou();
-
-    });
-
-    function checkAnswers() {
-      var answers;
-
-      for (var i = 1; i < 5; i++) {
-        var answers = ("#right0" + [i]);
-        console.log(answers)
-        if ($(answers).prop("checked")) {
-          correctAnswers++;
-        }
-         else if($(answers).prop("unchecked")){
-          unAnswered++;
-        } 
-        else {
-          incorrectAnswers++;
-        }
-        resultForYou();
+    for (i = 1; i <= totalQuestions; i++) {
+      var value = document.forms["quizForm"]["q" + i].value;
+      if (value === answers[i - 1]) {
+        correctAnswers++;
+      } else if (value === "") {
+        unAnswered++;
+      } else {
+        incorrectAnswers++;
       }
+    };
+    $("#submit").remove();
+    $("form").hide();
+    unAnswered = (4-(correctAnswers + incorrectAnswers));
+    var resultsDiv = $("<div>");
+    var p1 = $("<p>").text("Correct: " + correctAnswers);
+    var p2 = $("<p>").text("Incorrect: " + incorrectAnswers);
+    var p3 = $("<p>").text("Unanswered: " + unAnswered);
+    resultsDiv.append(p1, p2, p3);
+    $("#results").append(resultsDiv);
+  }
 
-    }
-
-    function resultForYou() {
-      $(".afterSubmit").show();
-      $("form").hide();
-      $("#submit").hide();
-      $(".time-remain").hide();
-      $(".correct").html("Correct Answers: " + correctAnswers);
-      $(".incorrect").html("Incorrect Answers: " + incorrectAnswers);
-      $(".unaswered").html("Unanswered: " + unAnswered);
-
+  
+  function timeCounter() {
+   
+    var stopTimer = clearInterval(intervalId);
+    // clearInterval(intervalId);
+    intervalId = setInterval(timeCounter, 1000);
+    setTime--;
+    $("#time-down").html("Time Remaining: " + " " + setTime);
+    if (setTime === 0 && !fromSubmit) {
+      resultForYou();
+    
     }
   }
-});
+
+  $("#submit").on("click", function () {
+    resultsForYou();
+    $(".time-remain").hide();
+
+  });
+
+    $("#btn-start").on("click", function () {
+      $("form").show();
+      $("#btn-start").hide();
+      $(".time-remain").show();
+      $("#submit").show();
+      timeCounter();
+    });
+
+  
+
+  });
+
+
+
 

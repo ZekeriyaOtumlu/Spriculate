@@ -12,75 +12,74 @@
 
 <body>
 
-    <div class="container">
-        <div id="header">
-            <h1>Totally Trivial Trivia!</h1>
-        </div>
+    <div id="wrapper">
+
+        <h1>Totally Trivial Trivia!</h1>
+
 
         <div class="start-button">
             <div class="time-remain">
-            <p id="time-down">Time Remaining:</p>
-        </div>
-            <button type="button" id="btn-start">LETS START</button>
+                <p id="time-down">Time Remaining:</p>
+            </div>
+            <div id="subwrapper">
+                <button type="button" id="btn-start">LETS START</button>
+            </div>
         </div>
     </div>
 
-    
 
-<form name="questions">
-    <div>
-        <p >1) Which of the following items was owned by the fewest U.S. homes in 1990?</p>
-        <input type="radio" name="q1" value="a" id="right01"> a) compact disk player <br>
-        <input type="radio" name="q1" value="b" id ="firstqb"> b) dishwasher <br>
-        <input type="radio" name="q1" value="c" id="firstqc"> c) cordless phone <br>
-        <input type="radio" name="q1" value="d" id="firstqdright001"> d) home computer <br>
-    </div>
 
-    <div>
-            <p>2) In the year 1900 in the U.S. what were the most popular first names given to boy and girl babies?</p>
-            <input id="secqa" type="radio" name="q2" value="a"> a) Joseph and Catherine  <br> 
-            <input id="secqb" type="radio" name="q2" value="b"> b) William and Elizabeth  <br>
-            <input id="secqc" type="radio" name="q2" value="c"> c) George and Anne <br>
-            <input id="right02" type="radio" name="q2" value="d"> d) John and Mary <br>
-       
-        </div>
-    
+    <form name="quizForm">
         <div>
-                <p>3) Who holds the record for the most victories in a row on the professional golf tour?</p>
-                <input  id="thirdqa" type="radio" name="q3" value="a"> a) Jack Nicklaus<br>
-                <input  id="right03" type="radio" name="q3" value="b"> b) Byron Nelson<br>
-                <input  id="thirdqc" type="radio" name="q3" value="c"> c) Arnold Palmer<br>
-                <input  id="thirdqd" type="radio" name="q3" value="d"> d) Ben Hogan <br>
-            </div>
-            <div>
-                    <p>4) During the 1980s for six consecutive years what breed of dog was the most popular in the U.S.?</p>
-                    <input  id="fouthqa" type="radio" name="q4" value="a"> a) German shepherd <br>
-                    <input  id="fouthqb" type="radio" name="q4" value="b"> b) Labrador retriever   <br>
-                    <input  id="right04" type="radio" name="q4" value="c"> c) cocker spaniel  <br>
-                    <input  id="fouthqd" type="radio" name="q4" value="d"> d) poodle <br>
-                    <br> 
-                    <br>
-                </div>
+            <p>1) Which of the following items was owned by the fewest U.S. homes in 1990?</p>
+            <input type="radio" name="q1" value="a" id="q1a"> a) compact disk player <br>
+            <input type="radio" name="q1" value="b" id="q1b"> b) dishwasher <br>
+            <input type="radio" name="q1" value="c" id="q1c"> c) cordless phone <br>
+            <input type="radio" name="q1" value="d" id="q1d"> d) home computer <br>
+        </div>
 
-               
-            </form> <br>
+        <div>
+            <p>2) In the year 1900 in the U.S. what were the most popular first names given to boy and girl babies?</p>
+            <input type="radio" name="q2" value="a" id="q2a"> a) Joseph and Catherine <br>
+            <input type="radio" name="q2" value="b" id="q2b"> b) William and Elizabeth <br>
+            <input type="radio" name="q2" value="c" id="q2c"> c) George and Anne <br>
+            <input type="radio" name="q2" value="d" id="q2d"> d) John and Mary <br>
 
-            <button id="submit">Submit</button>
+        </div>
 
-            <div class="afterSubmit">
-                <p>All Done!!!</p>
+        <div>
+            <p>3) Who holds the record for the most victories in a row on the professional golf tour?</p>
+            <input type="radio" name="q3" value="a" id="q3a"> a) Jack Nicklaus<br>
+            <input type="radio" name="q3" value="b" id="q3b"> b) Byron Nelson<br>
+            <input type="radio" name="q3" value="c" id="q3c"> c) Arnold Palmer<br>
+            <input type="radio" name="q3" value="d" id="q3d"> d) Ben Hogan <br>
+        </div>
+        <div>
+            <p>4) During the 1980s for six consecutive years what breed of dog was the most popular in the U.S.?</p>
+            <input type="radio" name="q4" value="a" id="q4a"> a) German shepherd <br>
+            <input type="radio" name="q4" value="b" id="q4b"> b) Labrador retriever <br>
+            <input type="radio" name="q4" value="c" id="q4c"> c) cocker spaniel <br>
+            <input type="radio" name="q4" value="d" id="q4d"> d) poodle <br>
+            <br>
+            <br>
+        </div>
 
-                <p class="correct">Correct Answers:</p>
-                <!-- <br> -->
-                <p class="incorrect">Incorrect:</p>
-                <!-- <br> -->
-                <p class="unaswered">Unanswered:</p>
+        <button id="submit">Submit</button>
+    </form> <br>
 
-            </div>
 
-            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    
+    <div class="row">
+            <div id="results"></div>
+        </div>
+       
+        
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
-           <script type="text/javascript" src="assets/javascript/app1.js"></script>
+    <script type="text/javascript" src="assets/javascript/app1.js"></script>
 
 </body>
 
