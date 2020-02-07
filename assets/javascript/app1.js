@@ -47,8 +47,9 @@ $(document).ready(function () {
     intervalId = setInterval(timeCounter, 1000);
     setTime--;
     $("#time-down").html("Time Remaining: " + " " + setTime);
-    if (setTime === 0 && !fromSubmit) {
-      resultForYou();
+    if (setTime < 1 && !fromSubmit) {
+      clearInterval(intervalId)
+      resultsForYou();
     
     }
   }
@@ -66,9 +67,6 @@ $(document).ready(function () {
       $("#submit").show();
       timeCounter();
     });
-
-  
-
   });
 
 
