@@ -6,7 +6,7 @@ $(document).ready(function () {
   $("#submit").hide();
 
   // Global Variables:
-  var setTime = 3;
+  var setTime = 45;
   var intervalId;
   var correctAnswers = 0;
   var incorrectAnswers = 0;
